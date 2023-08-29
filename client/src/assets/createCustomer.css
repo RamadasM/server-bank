@@ -1,0 +1,1037 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&family=Roboto:wght@500&display=swap'); */
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+* {
+    /* font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif; */
+    font-family: montserrat, arial, verdana;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --green: #A1FFCE;
+    --blue: #181a68;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+    --btngreen:#27ae60;
+}
+body {
+    height: 650px;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.create-container {
+    position: relative;
+    width: 100%;
+
+}
+
+.create-navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--green);
+    border-left: 10px solid var(--green);
+    transition: 0.5s;
+    overflow: hidden;  
+}
+
+.create-navigation.active {
+
+    width: 80px;
+}
+
+.create-navigation ul {
+
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+}
+
+.create-navigation ul li {
+
+    position: relative;
+    width: 100%;
+    list-style: none;
+
+}
+
+.create-navigation ul li:hover,
+.create-navigation ul li.hovered {
+
+    background-color: rgb(247, 247, 247);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.create-navigation ul li a {
+
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.create-navigation ul li:hover a,
+.create-navigation ul li.hovered a {
+
+    color: var(--blue);
+}
+
+.create-navigation ul li a .icon {
+
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.create-navigation ul li a .icon ion-icon {
+
+    font-size: 1.75rem;
+}
+
+.create-navigation ul li .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    line-height: 58px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+/* Main */
+
+.create-main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: rgb(247, 247, 247);
+    transition: 0.5s;
+
+}
+
+.create-main.active {
+
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.create-topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.create-toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.create-toggle:hover {
+    border-radius: 10px;
+}
+
+.create-search {
+    position: relative;
+    width: 300px;
+    margin: 5px 10px;
+    
+}
+
+.create-search label {
+
+    position: relative;
+    width: 100%;
+}
+
+.create-search label input {
+
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.2);
+    margin-top: 20px;
+    position: relative;
+
+}
+
+.create-search label ion-icon {
+
+    position: relative;
+    top: -29px;   
+    left: 10px;
+    font-size: 1.2rem;
+}
+
+.create-user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.4);
+}
+
+.create-user img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ============== Create Customer ============== */
+.create-cardheader {
+    position: relative;
+    top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.2);
+    background: rgb(240, 240, 240);
+    font-size: 14px ;
+}
+
+.create-cardheader .title {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.create-cardheader h2 {
+    font-weight: 600;
+    color: black;
+}
+
+.create-cardheader #myBtn {
+    font-size: 15px;
+    position: relative;
+    padding: 10px 15px;
+    background-color: var(--btngreen);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 10px 25px rgb(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.create-cardheader #myBtn:hover{
+
+    background: #0c5e04;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px #27ae60;
+}
+/* ==================Table=================== */
+.table-section{
+    position: relative;
+    top: 40px;
+    height: 650px;
+    overflow: auto;
+   
+}
+table{
+    width: 100%;
+    table-layout: fixed;
+    min-width: 800px;
+    border-collapse:collapse;
+    border-radius: 15px;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.2);
+    background: rgb(240, 240, 240);
+   
+}
+thead th{
+    background-color: #e4e4e4;
+    position: sticky;
+    top: 0;
+    color: #000000;
+    font-size: 17px;
+    padding: 25px 20px;
+    font-weight: bold;
+}
+th,td{
+    border-bottom: 1px solid #dddddd;
+    padding: 20px 20px;
+    word-break: break-all;
+    text-align: center;
+}
+tr td button{
+
+    font-size: 18px;
+    color: var(--btngreen);
+    background: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+tr:hover td{
+
+    color: #000000;
+    cursor: pointer;
+    background:#e0dede
+}
+
+.css-serial {
+    counter-reset: serial-number;
+    /* Set the serial number counter to 0 */
+}
+
+.css-serial td:first-child:before {
+    counter-increment: serial-number;
+    /* Increment the serial number counter */
+    content: counter(serial-number);
+    /* Display the counter */
+}
+
+/* ===================Table Icons========================== */
+.table-icons{
+
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding: 10px 20px;
+    position: relative;
+    top: 40px;
+}
+
+.table-icons div{
+    padding: 10px;
+    color: white;
+    border: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--btngreen);
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.5);
+    margin: 0 5px;
+}
+/* ===================Create Customer Popup========================== */
+.popup{
+
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s opacity 0,5s; */
+}
+
+.login-card {
+    position: relative;
+    top: 0;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-clip: padding-box;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    box-shadow: 2px 2px 10px #000000;
+    
+  }
+
+/* .bg-active{
+
+    visibility: visible;
+    opacity: 1;
+}   */
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;  
+    margin-bottom: 20px;
+   
+   
+  }
+  .card-header p{
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+  }
+  .card-header span{
+    cursor: pointer;
+    color: #000000;
+    font-size: 40px;
+  }
+  .card-header span:hover{
+
+    color: #a2a1a1;
+  }
+  .card-header .log {
+    margin: 0;
+    font-size: 24px;
+    color: black;
+  }
+  
+ .create-form-group {
+    margin-bottom: 15px;
+  }
+  
+ .create-form-group label {
+    font-size: 15px;
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+  
+.create-form-group span {
+    color: red;
+    text-align: center;
+    font-size: 14px;
+}
+
+ .create-form-group input {
+    width: 100%;
+    padding: 6px 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 0; 
+    
+  }
+  
+ .create-form-group button[type="submit"] {
+    width: 100%;
+    background-color: var(--btngreen);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 1px 10px 25px rgb(0, 0, 0, 0.5);
+  }
+  
+ .create-form-group button[type="submit"]:hover {
+    background: #0c5e04;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px #27ae60;
+    color: rgb(255, 255, 255);
+  }
+  
+
+/* ===================Edit Customer Popup========================== */
+.edit-login-card .edit-form{
+    max-height: 500px;
+    overflow-y: scroll;
+}
+.edit-popup{
+
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s opacity 0,5s; */
+    
+}
+.edit-login-card {
+    overflow-y: hidden;
+    max-height: 700px;
+    position: relative;
+    top: 0;
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-clip: padding-box;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    box-shadow: 2px 2px 10px #000000;
+    
+  }
+.edit-bg-active{
+
+    visibility: visible;
+    opacity: 1;
+}  
+
+  .edit-card-header {
+    display: flex;
+    justify-content: space-between;  
+    margin-bottom: 20px;
+    
+   
+  }
+  .edit-card-header p{
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+  }
+  .edit-card-header span{
+    cursor: pointer;
+    color: #000000;
+    font-size: 40px;
+    
+  }
+  .edit-card-header span:hover{
+
+    color: #a3a3a3;
+  }
+  .edit-card-header .log {
+    margin: 0;
+    font-size: 24px;
+    color: black;
+  }
+  
+  .edit-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .edit-form-group label {
+    font-size: 15px;
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+  
+  .edit-form-group input {
+    width: 100%;
+    padding: 6px 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 0; 
+   
+  }
+  
+  .edit-form-group input[type="submit"] {
+    width: 100%;
+    background-color: var(--btngreen);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 1px 10px 25px rgb(0, 0, 0, 0.5);
+  }
+  
+  .edit-form-group input[type="submit"]:hover {
+    background: #0c5e04;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px #27ae60;
+    color: rgb(255, 255, 255);
+  }
+
+  .edit-form-group input[type="button"] {
+    width: 10%;
+    background-color: var(--btngreen);
+    color: white;
+    padding: 4px 2px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 1px 10px 25px rgb(0, 0, 0, 0.5);
+    margin-left: 20px;
+  }
+  
+  .edit-form-group input[type="button"]:hover {
+    background: #0c5e04;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px #27ae60;
+    color: rgb(255, 255, 255);
+  }
+
+  .verify-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verify-btn input {
+    width: 40%;
+    height: 20%;
+    background-color: var(--btngreen);
+    color: white;
+    padding: 12px 2px;
+    margin: 9px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 1px 10px 25px rgb(0, 0, 0, 0.5);
+    margin-left: 22px;
+  }
+
+  .verify-btn .reject  {
+    background-color: rgb(206, 37, 37);
+  }
+
+  .verify-btn .reject:hover{
+
+    background-color: rgb(121, 23, 23);
+  }
+  
+  .verify-btn input:hover{
+
+    background-color: rgb(20, 126, 47);
+  }
+/* Edit View Button */
+
+.edit-form-view{
+    padding: 10px;
+    margin: 10px;
+}
+
+.edit-view {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .edit-view label {
+    font-size: 15px;
+    margin-left: 0;
+    margin-bottom: 5px;
+    
+  }
+  
+  .edit-view input {
+    width: 100%;
+    padding: 6px 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 0; 
+   
+  }
+  
+  .edit-view input[type="submit"] {
+    width: 100%;
+    background-color: var(--btngreen);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 1px 10px 25px rgb(0, 0, 0, 0.5);
+  }
+  
+  .edit-view input[type="submit"]:hover {
+    background: #0c5e04;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px #27ae60;
+    color: rgb(255, 255, 255);
+  }
+
+  .edit-view input[type="button"] {
+    width: 10%;
+    background-color: var(--btngreen);
+    color: white;
+    padding: 4px 2px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 1px 10px 25px rgb(0, 0, 0, 0.5);
+    margin-left: 20px;
+  }
+  
+  .edit-view input[type="button"]:hover {
+    background: #0c5e04;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px #27ae60;
+    color: rgb(255, 255, 255);
+  }
+
+/* ==================Logout Page======================== */
+
+.logout-popup {
+
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s opacity 0, 5s;
+}
+
+.logout-card {
+    position: relative;
+    top: 20px;
+    width: 500px;
+    height: 250px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-clip: padding-box;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    box-shadow: 2px 2px 10px #000000;
+  }
+
+.logout-bg-active {
+
+    visibility: visible;
+    opacity: 1;
+}  
+
+.logout-card-header {
+    display: flex;
+    justify-content:end;  
+    margin-bottom: 0;
+   
+   
+  }
+  .logout-card-header span{
+    cursor: pointer;
+    color: #707070;
+    font-size: 40px;
+  }
+  .logout-card-header span:hover{
+
+    color: #161616;
+  }
+  
+  .logout-title{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+  .logout-title h1{
+    position: relative;
+    top: -25px;
+  }
+  .logout-title p{
+
+    font-size: 20px;
+    position: relative;
+    top: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 30px;
+  }
+  
+  .form-group input{
+    width: 48%;
+    background-color: var(--green-registration);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .form-group a{
+    width: 48%;
+    background-color: var(--green-registration);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .form-group input:hover {
+    background-color: #042d31;
+    color: rgb(255, 255, 255);
+  }
+
+  .form-group .cancel{
+    font-size: 18px;
+    background: rgb(153, 152, 152);
+    border-radius: 10px;
+  }
+  .form-group .logout{
+    font-size: 18px;
+    background: rgb(161, 42, 42);
+    border-radius: 10px;
+  }
+  .form-group .cancel:hover{
+
+    background: rgb(80, 79, 79);
+  }
+  .form-group .logout:hover{
+
+    background: rgb(243, 36, 36);
+  }
+
+/* =========Responsive Design======== */
+
+@media (max-width:991px) {
+
+    body {
+        overflow: scroll;
+}
+
+    .navigation {
+        left: -300px;
+    }
+
+    .navigation.active {
+        width: 300px;
+        left: 0;
+    }
+
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+    .main.active {
+        left: 300px;
+    }
+
+    .popup {
+
+        width: 100%;
+        height: 100%;
+    }
+
+    .input-box {
+        width: 200px;
+    }
+
+    .popup .input-box label {
+
+        font-size: 15px;
+    }
+
+    .popup form button {
+        left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .datas {
+        overflow-x: auto;
+    }
+
+    .popup {
+
+       
+        width: 100%;
+        height: 100%;
+    }
+
+    .input-box {
+        width: 200px;
+    }
+
+    .popup .input-box label {
+
+        font-size: 15px;
+    }
+
+    .popup form button {
+        left: 20px;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 650px) {
+    .create {
+        overflow-x: auto;
+    }
+
+    .popup {
+
+        width: 100%;
+        height: 100%;
+    }
+
+    .popup .input-box label {
+
+        font-size: 15px;
+    }
+
+    .popup form button {
+        left: 20px;
+
+    }
+    .logout-card{
+
+        width: 400px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 650px) {
+    .create {
+        overflow-x: auto;
+    }
+
+    .popup {
+
+       
+        width: 100%;
+        height: 100%;
+    }
+
+    .popup .input-box label {
+
+        font-size: 15px;
+    }
+
+    .popup form button {
+        left: 20px;
+
+    }
+    .logout-card{
+
+        width: 400px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardheader h2 {
+        font-size: 20px;
+    }
+
+    .user {
+        min-width: 40px;
+    }
+
+    .navigation {
+        width: 100%;
+        left: -100%;
+        z-index: 1000;
+    }
+
+    .navigation.active {
+        width: 100%;
+        left: 0;
+    }
+
+    .toggle {
+        z-index: 10001;
+    }
+
+    .main.active .toggle {
+        color: #ffffff;
+        position: fixed;
+        right: 0;
+        left: initial;
+    }
+
+    .popup {
+
+        width: 100%;
+        height: 100%;
+    }
+
+    .popup .input-box input {
+        position: relative;
+        width: 80%;
+        left: -37px;
+    }
+
+    .popup .input-box label {
+
+        left: -15px;
+        font-size: 15px;
+    }
+
+    .popup form button {
+        left: 0;
+        padding: 10px 12px;
+        width: 100px;
+    }
+    .logout-card{
+
+        width: 400px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 350px) {
+    .popup {
+
+       
+        width: 100%;
+        height: 100%;
+    }
+
+    .popup .input-box input {
+        position: relative;
+        width: 80%;
+        left: -45px;
+    }
+
+    .popup .input-box label {
+
+        left: -15px;
+        font-size: 15px;
+    }
+
+    .popup form button {
+        left: 0;
+        padding: 10px 12px;
+        width: 100px;
+
+    }
+    .logout-card{
+
+        width: 400px;
+        height: 250px;
+    }
+}

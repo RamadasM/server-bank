@@ -1,0 +1,468 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&family=Roboto:wght@500&display=swap'); */
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+*{
+    /* font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif; */
+    font-family: montserrat, arial, verdana;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+:root{
+
+    --green-registration: #A1FFCE;
+    --blue-registration :#181a68;
+    --gray:#f5f5f5;
+    --black1:#222;
+    --black2:#999;
+    --btngreen:#27ae60;
+}
+
+body{ 
+    min-height: 100vh;
+    overflow: hidden;
+   
+}
+
+.container{
+   position: relative;
+   width: 100%; 
+  
+}
+
+.navigation{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--green-registration);
+    border-left: 10px solid var(--green-registration);
+    /* border-right: 10px solid var(--pink); */
+    transition: 0.5s; 
+    overflow: hidden;
+    
+}
+
+.navigation.active{
+
+    width: 80px;
+}
+.navigation ul{
+
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    
+   
+}
+.navigation ul li{
+
+    position: relative;
+    width: 100%;
+    list-style: none;
+    
+}
+
+.navigation ul li:hover, .navigation ul li.hovered {
+
+    background-color: rgb(247, 247, 247);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.navigation ul li a{
+   font-size: 16px;
+    position: relative;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.navigation ul li:hover a, .navigation ul li.hovered a{
+    
+    color: var(--blue-registration);
+}
+
+.navigation ul li a .icon{
+
+    position: relative;
+    display: block;
+    min-width:60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+.navigation ul li a .icon ion-icon{
+
+    font-size: 1.75rem;
+}
+
+.navigation ul li .title{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    line-height: 58px;
+    text-align: start;
+    white-space: nowrap;   
+}
+
+/* Main */
+
+ .main{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: rgb(247, 247, 247);
+    transition: 0.5s;
+   
+ }
+
+ .main.active{
+
+    width: calc(100% - 80px);
+    left: 80px;
+ }
+ .topbar{
+     width: 100%;
+     height: 60px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 0 10px;
+ }
+
+ .toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.toggle:hover {
+    border-radius: 10px;
+}
+
+ .search{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+    width: 400px;
+    margin: 5px 10px;
+    position: relative;
+    top: 5px;
+ }
+
+.search label {
+
+    
+    width: 100%;
+}
+
+.search label input {
+
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.2);
+    margin-top: 5px;
+    position: relative;
+
+}
+
+.search label ion-icon {
+
+    position: relative;
+    top: -29px;
+    left: 10px;
+    font-size: 1.2rem;
+}
+.user{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.4);
+    
+}
+.user img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ============== Dashboard Items ============== */
+.card_header{
+    position: relative;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.2);
+    background: rgb(240, 240, 240);
+    font-size: 14px;
+}
+.card_header .title{
+    position: relative;
+    width: 100%;
+    }
+.dahsborard-card-box{
+    position: relative;
+    top: 35px;
+    width: 100%;
+    padding: 20px;
+    display:grid;
+    grid-template-columns: repeat(3 , 0.2fr);
+    gap: 80px;
+}
+
+.dahsborard-card-box .card{
+    position: relative;
+    height: 140px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(240, 240, 240);
+    padding: 30px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    color: black;
+}
+.dahsborard-card-box a{
+
+    text-decoration: none;
+}
+.dahsborard-card-box .card a{
+    text-decoration: none;
+    color: #000000;
+}
+.dahsborard-card-box .card:hover{
+    background: var(--btngreen);
+    color: white;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 3px #27ae60;
+}
+/* ==================Logout Page======================== */
+
+.logout-popup{
+
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s opacity 0,5s; 
+}
+.logout-card {
+    position: relative;
+    top: 20px;
+    width: 500px;
+    height: 250px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-clip: padding-box;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    box-shadow: 2px 2px 10px #000000;
+    
+    
+  }
+.logout-bg-active{
+
+    visibility: visible;
+    opacity: 1;
+}  
+
+.logout-card-header {
+    display: flex;
+    justify-content:end;  
+    margin-bottom: 0;
+   
+   
+  }
+  .logout-card-header span{
+    cursor: pointer;
+    color: #707070;
+    font-size: 40px;
+  }
+  .logout-card-header span:hover{
+
+    color: #161616;
+  }
+  
+  .logout-title{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+  .logout-title h1{
+    position: relative;
+    top: -25px;
+  }
+  .logout-title p{
+
+    font-size: 20px;
+    position: relative;
+    top: 10px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 30px;
+  }
+  
+  .form-group input{
+    width: 48%;
+    
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .form-group a{
+    width: 48%;
+   
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .form-group input:hover {
+    background-color: #042d31;
+    color: rgb(255, 255, 255);
+  }
+
+  .form-group .cancel{
+    font-size: 18px;
+    background: rgb(153, 152, 152);
+    border-radius: 10px;
+  }
+  .form-group .logout{
+    font-size: 18px;
+    background: rgb(161, 42, 42);
+    border-radius: 10px;
+  }
+  .form-group .cancel:hover{
+
+    /* background: rgb(80, 79, 79); */
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 3px rgb(80, 79, 79);
+  }
+  .form-group .logout:hover{
+
+    /* background: rgb(243, 36, 36); */
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 3px rgb(243, 36, 36);
+  }
+/* =========Responsive Design======== */
+
+@media (max-width:991px){
+
+    .dahsborard-card-box .card{
+
+        width: 250px;
+        height: 180px;
+    }
+    .navigation{
+        left: -300px;
+    }
+
+    .navigation.active{
+        width: 300px;
+        left: 0;
+    }
+    .main{
+        width: 100%;
+        left: 0;
+    }
+    .main.active{
+        left: 300px;
+    }
+    .logout-popup{
+
+        width: 100%;
+        height: 100%;
+    }
+    .input-box{
+        width: 200px;
+    }
+    .logout-popup .input-box label{
+
+        font-size: 15px;
+    }
+    .logout-popup form button{
+        left: 20px;
+    }
+}
+@media (max-width:650px){
+
+    .dahsborard-card-box .card{
+
+        width: 200px;
+        height: 150px;
+        font-size: 16px;
+    }
+    .dahsborard-card-box{
+
+        display: flex;
+        flex-direction: column;
+        
+        overflow-y: scroll;
+    }
+    .logout-card{
+
+        width: 400px;
+        height: 250px;
+    }
+    .logout-title p{
+        font-size: 15px;
+    }
+}

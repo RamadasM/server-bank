@@ -1,0 +1,220 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+.otp-page * {
+    font-family: montserrat, arial, verdana;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+
+.otp-page  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #A1FFCE;
+    background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);
+    background: linear-gradient(to right, #FAFFD1, #A1FFCE);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.otp-error {
+    text-align: center;
+}
+
+.otpcontainer {
+    position: relative;
+    height: 450px;
+    background: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 400px;
+    padding-top: 10px;
+    animation: form 1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+
+}
+
+@keyframes form {
+
+    0% {
+        transform: translateY(-10%);
+    }
+}
+
+.otpcontainer:hover {
+    transform: scale(1 );
+    border-radius: 50px;
+  }
+  
+  .otpcontainer:hover {
+    box-shadow: 0px 0px 30px 1px rgb(0, 0, 0);
+}
+/* 
+ {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  } */
+  .otpcontainer .resend {
+    position: relative;
+    color: #000000;
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+    top: 30px;
+}
+.otpcontainer .resend a{
+    position: relative;
+    top: 0px;
+    text-decoration: none;
+    color: rgb(0, 60, 255);
+    cursor: pointer;
+}
+.otpcontainer .resend a:hover{
+
+    text-decoration: underline;
+}
+.otp-text {
+    
+    font-size: 30px;
+    text-align: center;
+    top: -20px;
+    position: relative;
+}
+
+.input-box {
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 1px solid black;
+    background: transparent;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: 0.5s;
+
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+
+    top: -5px;
+
+}
+
+.input-box input {
+
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: rgb(0, 0, 0);
+    padding: 0 35px 0 5px;
+    color: #000000;
+}
+
+.input-box .icon {
+
+    position: absolute;
+    right: 8px;
+    line-height: 58px;
+    /* color: white; */
+
+}
+
+.input-text:focus {
+    outline: none;
+}
+
+/* .forgot {
+
+    margin: -15px 0 15px;
+    font-size: 0.9em;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    accent-color: red;
+
+}
+
+.forgot label {
+
+    margin-right: 3px;
+}
+
+.forgot a {
+    color: black;
+    text-decoration: none;
+
+}
+
+.forgot a:hover {
+    text-decoration: underline;
+} */
+
+.otpcontainer button {
+
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #27ae60;
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    font-size: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.2s linear;
+    break-before: 2;
+
+}
+
+.otpcontainer button:hover{
+
+    box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 3px #27ae60;
+}
+
+.otpcontainer .register {
+    margin: 20px 0 10px;
+    text-align: center;
+    color: rgb(224, 0, 245);
+}
+
+.otpcontainer .register p a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.otpcontainer .register p a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 360px) {
+    /* .otpcontainer {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    } */
+
+    .otp-input-text {
+        width: 290px;
+    }
+}
