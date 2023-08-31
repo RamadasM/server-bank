@@ -298,16 +298,19 @@ function sendOTPEmail(email, otp, reasonText, data) {
     body = `Your OTP: ${otp}`;
   }
   
-  const firstName = data.customer_firstName
+  const isOtp = isEmpty(otp)
   let checkReasonText = reasonText === undefined
   console.log(checkReasonText)
-  if(checkReasonText === true) {
-    subject = "Account Verified Successfully"
-    body = `Dear ${data.customer_firstName} ${data.customer_secondName},\n\nYour account has been successfully verified. Thank you for completing the verification process.\n\nBest regards,\nKeerthana\n`
-  } else if(checkReasonText === false){
-    subject = "Account Verification Rejected"
-    body = `Dear ${data.customer_firstName} ${data.customer_secondName},\n\nYour account has been Rejected. Reason for Rejection: ${reasonText}.\n\nBest regards,\nKeerthana\n`
+  if(isOtp === true){
+    if(checkReasonText === true) {
+      subject = "Account Verified Successfully"
+      body = `Dear ${data.customer_firstName} ${data.customer_secondName},\n\nYour account has been successfully verified. Thank you for completing the verification process.\n\nBest regards,\nKeerthana\n`
+    } else if(checkReasonText === false){
+      subject = "Account Verification Rejected"
+      body = `Dear ${data.customer_firstName} ${data.customer_secondName},\n\nYour account has been Rejected. Reason for Rejection: ${reasonText}.\n\nBest regards,\nKeerthana\n`
+    }
   }
+  
   console.log(subject)
   console.log(body)
   const mailOptions = {
