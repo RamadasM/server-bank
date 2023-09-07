@@ -315,13 +315,6 @@ tr:hover td{
     /* Set the serial number counter to 0 */
 }
 
-.css-serial td:first-child:before {
-    counter-increment: serial-number;
-    /* Increment the serial number counter */
-    content: counter(serial-number);
-    /* Display the counter */
-}
-
 /* ===================Table Icons========================== */
 .table-icons{
 
@@ -861,6 +854,9 @@ tr:hover td{
 }
 
 @media (max-width: 768px) {
+  body {
+    overflow: scroll;
+}
     .datas {
         overflow-x: auto;
     }
@@ -888,6 +884,9 @@ tr:hover td{
 }
 
 @media (max-width: 650px) {
+  body {
+    overflow: scroll;
+}
     .create {
         overflow-x: auto;
     }
@@ -915,6 +914,9 @@ tr:hover td{
 }
 
 @media (max-width: 650px) {
+  body {
+    overflow: scroll;
+}
     .create {
         overflow-x: auto;
     }
@@ -943,6 +945,9 @@ tr:hover td{
 }
 
 @media (max-width: 480px) {
+  body {
+    overflow: scroll;
+}
     .cardheader h2 {
         font-size: 20px;
     }
@@ -1004,6 +1009,9 @@ tr:hover td{
 }
 
 @media (max-width: 350px) {
+  body {
+    overflow: scroll;
+}
     .popup {
 
        

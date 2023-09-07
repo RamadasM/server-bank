@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import Webcam from "webcamjs";
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import countryList from "react-select-country-list";
 import Select from "react-select";
 
@@ -26,7 +26,7 @@ const KYC = () => {
   const [country, setCountry] = useState("");
   const [documentType, setDocumentType] = useState("");
   const [pancardDocument, setPancardDocument] = useState("");
-
+  const [ moveToLogin, setMoveToLogin ] = useState(false)
   const [error, setError] = useState();
   const [phone, setPhone] = useState('');
   const options = useMemo(() => countryList().getData(), [])
@@ -274,6 +274,7 @@ const KYC = () => {
         .then((data) => {
           alert(data.message);
           console.log("File uploaded successfully:", data);
+          setMoveToLogin(true)
         })
         .catch((error) => {
           console.error("Error uploading file:", error);
@@ -448,6 +449,9 @@ const KYC = () => {
     };
   }, []);
 
+  if(moveToLogin){
+    return <Navigate to="/login" />
+  }
   return (
     <div className="container">
       <form onSubmit={handleSubmit} id="msform">
@@ -636,7 +640,7 @@ const KYC = () => {
 
             <div class="photo-upload">
               <div class="image">
-                <img src={file2Preview} height="80" alt="Preview" />
+                <img src={file2Preview} height="60" alt="Preview" />
                 {file2Preview !== PersonImage}
               </div>
               <div>
@@ -685,7 +689,7 @@ const KYC = () => {
             </button>
             <div class="image-preview-front">
               <div class="image">
-                <img src={file5Preview} height="80" alt="Preview" />
+                <img src={file5Preview} height="60" alt="Preview" />
                 {file5Preview !== addImage}
               </div>
               <div>
@@ -698,7 +702,7 @@ const KYC = () => {
 
             <div class="image-preview-front">
               <div class="image">
-                <img src={file3Preview} height="80" alt="Preview" />
+                <img src={file3Preview} height="60" alt="Preview" />
                 {file3Preview !== addImages}
               </div>
               <div>
@@ -714,7 +718,7 @@ const KYC = () => {
             {/* backend image */}
             <div class="image-preview-back">
               <div class="image">
-                <img src={file4Preview} height="80" alt="Preview" />
+                <img src={file4Preview} height="60" alt="Preview" />
                 {file4Preview !== addImaging}
               </div>
               <div>
