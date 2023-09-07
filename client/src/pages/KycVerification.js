@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import '../assets/createCustomer.css'
 
@@ -32,13 +34,12 @@ function CreateCustomer() {
         }
     );
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalRecords, setTotalRecords] = useState(0);
-    const [recordsPerPage, setRecordsPerPage] = useState(10);
+    const totalRecords = dbData.length;
+    const recordsPerPage = 10;
     const [searchTerm, setSearchTerm] = useState('');
     const [imageSrc, setImageSrc] = useState('');
-    const [loading, setLoading] = useState(true);
-    const [isVerified, setIsVerified] = useState(true);
-    const [getStatus, setGetStatus] = useState('');
+    
+  
     const getAllImages = []
 
     const handleEdit = (rowdata) => {
@@ -239,36 +240,44 @@ function CreateCustomer() {
 
     }, []);
 
+    
     const onPageChange = (page) => {
         setCurrentPage(page);
     }
 
     const renderTableData = () => {
-        const startIndex = (currentPage - 1) * recordsPerPage;
+        const startIndex = (currentPage - 1) * recordsPerPage + 1;
         const endIndex = startIndex + recordsPerPage;
         const filteredData = dbData.filter((record) =>
-            String(record.customer_id).includes(searchTerm)
-          );
-
-        return filteredData.slice(startIndex, endIndex).map((record) => (
+          String(record.customer_id).includes(searchTerm)
+        );
+     
+        return filteredData.slice(startIndex, endIndex).map((record, index) => (
             <tr key={record.id}>
-                <td></td>
-                <td>{record.customer_id}</td>
-                <td>{record.customer_firstName}</td>
-                <td>{record.customer_secondName}</td>
-                <td style={{ color: record.status === 'Rejected' ? 'red' : 'green' }}>{!(record.status) ? 'Not Verified' : record.status}</td>
-                {/* <td>{record.balance}</td> */}
-                <td>
-                    <button className="edit" style={{ fontSize: '25px' }} onClick={() => handleEdit(record)}><ion-icon name="shield-checkmark-outline"></ion-icon></button>
-                </td>
+              <td>{startIndex+ index}</td> {/* Display and increment the serial number */}
+              <td>{record.customer_id}</td>
+              <td>{record.customer_firstName} {record.customer_secondName}</td>
+              <td>{record.customer_email}</td>
+              <td style={{ color: record.status === 'Rejected' ? 'red' : 'green' }}>
+                {!(record.status) ? 'Not Verified' : record.status}
+              </td>
+              <td>
+                <button className="edit" onClick={() => handleEdit(record)}>
+                {record.status === "Verified" ? (
+      <FontAwesomeIcon icon={faCheckCircle} color="green" />
+    ) : !(record.status) ? (
+        <FontAwesomeIcon icon={faQuestionCircle} />
+      ): (
+      <FontAwesomeIcon icon={faTimesCircle} color="red" />
+    )}
+                </button>
+              </td>
             </tr>
-        ))
-    }
+          ));
+      };
 
     const renderPagination = () => {
         const totalPages = Math.ceil(totalRecords / recordsPerPage);
-        const hasNextPage = currentPage < totalPages;
-
         const pageNumbers = [];
         for (let i = 1; i <= totalPages; i++) {
             pageNumbers.push(
@@ -277,13 +286,27 @@ function CreateCustomer() {
                 </div>
             )
         }
+        const handleNextPage = () => {
+            setCurrentPage(currentPage + 1);
+        };
+        const handleFirstPage = () => {
+            setCurrentPage(1);
+        };
+        const handlePrevPage = () => {
+            if (currentPage > 1) {
+              setCurrentPage(currentPage - 1);
+            }
+        };
+        const handleLastPage = () => {
+        setCurrentPage(totalPages);            
+        };
         return (
             <div className="table-icons">
-                <div onClick={() => onPageChange(1)}><i className="fa-solid fa-angles-left"></i></div>
-                <div onClick={() => onPageChange(currentPage - 1)}><i className="fa-solid fa-angle-left"></i></div>
-                {pageNumbers}
-                <div onClick={() => onPageChange(currentPage + 1)}><i className="fa-solid fa-angle-right"></i></div>
-                <div onClick={() => onPageChange(totalPages)}><i className="fa-solid fa-angles-right"></i></div>
+                <div onClick={handleFirstPage}><i className="fa-solid fa-angles-left"></i></div>
+                <div onClick={handlePrevPage} disabled={currentPage === 1}><i className="fa-solid fa-angle-left"></i></div>
+                {/* {pageNumbers} */}
+                <div onClick={handleNextPage}><i className="fa-solid fa-angle-right"></i></div>
+                <div onClick={handleLastPage}><i className="fa-solid fa-angles-right"></i></div>
             </div>
         )
     }
@@ -339,7 +362,7 @@ function CreateCustomer() {
                 <div className="create-main">
                     <div className="create-topbar">
                         <div className="create-toggle">
-                            <ion-icon name="menu"></ion-icon>
+                        <ion-icon name="chevron-back-outline"></ion-icon>
                         </div>
                     </div>
                     {/* Main Ends */}
@@ -347,7 +370,7 @@ function CreateCustomer() {
                     <div className="create-cardheader">
                         <div className="create-title">
                             <span>
-                                <h2>Create Customer</h2>
+                                <h2>KYC Verification</h2>
                             </span>
                         </div>
                         <div className="create-search">
@@ -368,7 +391,6 @@ function CreateCustomer() {
                                         <th>Customer Name</th>
                                         <th>Customer Email</th>
                                         <th>Status</th>
-                                        {/* <th>Balance</th> */}
                                         <th>View</th>
                                     </tr>
                                 </thead>

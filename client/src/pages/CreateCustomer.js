@@ -26,7 +26,7 @@ function CreateCustomer (){
     const [isEditPopupOpen, setEditPopupOpen] = useState(false);
     const [editData, setEditData] = useState({customerId: '', customerName: '', customerEmail:'', customerMno: '', balance:''});
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalRecords, setTotalRecords] = useState(0);
+    const totalRecords = dbData.length;
     const [recordsPerPage, setRecordsPerPage] = useState(10);
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -254,15 +254,15 @@ function CreateCustomer (){
     }
 
     const renderTableData = () => {
-        const startIndex = (currentPage - 1) * recordsPerPage;
+        const startIndex = (currentPage - 1) * recordsPerPage + 1;
         const endIndex = startIndex + recordsPerPage;
         
         const filteredData = dbData.filter((record) =>
         record.customer_name.toLowerCase().includes(searchTerm.toLowerCase())
       );
-        return filteredData.slice(startIndex, endIndex).map((record) => (
+        return filteredData.slice(startIndex, endIndex).map((record, index) => (
             <tr key={record.id}>
-                <td></td>
+                <td>{startIndex + index}</td>
                 <td>{record.customer_id}</td>
                 <td>{record.customer_name}</td>
                 <td>{record.customer_email}</td>
@@ -275,24 +275,35 @@ function CreateCustomer (){
 
     const renderPagination = () => {
         const totalPages = Math.ceil(totalRecords / recordsPerPage);
-        const hasNextPage = currentPage < totalPages;
-
         const pageNumbers = [];
-        for(let i = 1; i <= totalPages; i++){
+        for (let i = 1; i <= totalPages; i++) {
             pageNumbers.push(
-                <div key={i} onClick={() =>onPageChange(i)}>
+                <div key={i} onClick={() => onPageChange(i)}>
                     {i}
                 </div>
             )
         }
-        console.log(pageNumbers)
-        return(
+        const handleNextPage = () => {
+            setCurrentPage(currentPage + 1);
+        };
+        const handleFirstPage = () => {
+            setCurrentPage(1);
+        };
+        const handlePrevPage = () => {
+            if (currentPage > 1) {
+              setCurrentPage(currentPage - 1);
+            }
+        };
+        const handleLastPage = () => {
+        setCurrentPage(totalPages);            
+        };
+        return (
             <div className="table-icons">
-                        <div onClick={() => onPageChange(1)}><i className="fa-solid fa-angles-left"></i></div>
-                        <div onClick={() => onPageChange(currentPage - 1)}><i className="fa-solid fa-angle-left"></i></div>
-                        {pageNumbers}
-                        <div onClick={() => onPageChange(currentPage + 1)}><i className="fa-solid fa-angle-right"></i></div>
-                        <div onClick={() => onPageChange(totalPages)}><i className="fa-solid fa-angles-right"></i></div>
+                <div onClick={handleFirstPage}><i className="fa-solid fa-angles-left"></i></div>
+                <div onClick={handlePrevPage} disabled={currentPage === 1}><i className="fa-solid fa-angle-left"></i></div>
+                {/* {pageNumbers} */}
+                <div onClick={handleNextPage}><i className="fa-solid fa-angle-right"></i></div>
+                <div onClick={handleLastPage}><i className="fa-solid fa-angles-right"></i></div>
             </div>
         )
     }
@@ -344,7 +355,7 @@ function CreateCustomer (){
                 <div className="create-main">
                     <div className="create-topbar">
                         <div className="create-toggle">
-                            <ion-icon name="menu"></ion-icon>
+                        <ion-icon name="chevron-back-outline"></ion-icon>
                         </div>
                         {/* <div className="create-user">
                             <img src= {Person} alt="" />

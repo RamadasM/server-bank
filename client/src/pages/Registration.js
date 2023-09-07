@@ -10,7 +10,7 @@ function RegistrationForm() {
     const [gotoMenu, setGotoMenu] = useState(false);
     const [error, setError] = useState([]);
     const [gotoOtpPage, setOtpPage] = useState(false);
-    const [isRegDone, setRegDone] = useState(false)
+    const [isRegFill, setRegFill] = useState(false)
 
     sessionStorage.setItem('email', customerEmail);
     sessionStorage.setItem('phone', customerMno);
@@ -50,7 +50,8 @@ function RegistrationForm() {
             console.log(otpResponse);
             if (otpResponse.status === 200) {
                 setError("");
-                setRegDone(true);
+                window.alert("OTP sent to given registration email")
+                setRegFill(true);
                 console.log("No existing customer found");
             }
             else {
@@ -65,7 +66,7 @@ function RegistrationForm() {
 
     if (gotoMenu) {
         return <Navigate to='/login' />
-    } if (gotoOtpPage && isRegDone) {
+    } if (gotoOtpPage && isRegFill) {
         return <Navigate to='/otpVerification' state={{customerEmail}}/>
     }
 

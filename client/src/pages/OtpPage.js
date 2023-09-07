@@ -37,9 +37,10 @@ function OtpPage() {
             setPasswordPage(true)
         } else {
             setError(response.message);
-            //   response.message === "Invalid OTP" ? window.alert(response.message) : setError(response.message)
-            response.message === "OTP expired" || response.message === "Invalid OTP" ? window.alert(response.message) : setError(response.message)
-            // response.message === "OTP expired" ? handleAlertClose() : setError(response.message)
+            //   response.message === "Invalid OTP. Please check or resend" ? window.alert(response.message) : setError(response.message)
+            response.message === "OTP expired. Please resend" || response.message === "Invalid OTP. Please check or resend" ? window.alert(response.message) : setError(response.message)
+            response.message === "OTP expired. Please resend" ? setOtp('') : setError(response.error)
+            // response.message === "OTP expired. Please resend" ? handleAlertClose() : setError(response.message)
         }
     }
     const handleAlertClose = () => {
@@ -58,6 +59,7 @@ function OtpPage() {
 
     const reSendOtp = async(event) => {
         event.preventDefault();
+        setOtp('')
         try{
             const otpSend = await fetch(`http://localhost:5002/forgotPasswordOtpSend`, 
             {

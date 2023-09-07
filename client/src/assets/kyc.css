@@ -490,6 +490,9 @@ h3 {
 
 
 @media screen and (min-width: 600px) {
+    body {
+        overflow: scroll;
+}
     html {
         height: 100%;
         background: #A1FFCE;

@@ -177,7 +177,7 @@ const backOfficeLogin = async (req, res) => {
 
       console.log(receivedPassword)
       const plaintextPassword = decryptPassword(
-        receivedPassword,
+        getPasskey,
         secretKey
       );
       console.log("Getting correct password", getPasskey)
@@ -347,7 +347,7 @@ const otpVerification = async (req, res) => {
     const isForgotOtpDocAvl = !isEmpty(forgotOtpDoc) ? true : false;
     console.log("isOtp", isOtp);
     if (!otpDoc && !isForgotOtpDocAvl) {
-      res.status(400).json({ message: "Invalid OTP" });
+      res.status(400).json({ message: "Invalid OTP. Please check or resend" });
     } else if ((isOtp && otpDoc.otp === otp) || (isForgotOtpDocAvl && forgotOtpDoc.forgotPassword_otp === otp)) {
       res.status(200).json({ message: "Valid OTP" });
     }
@@ -360,7 +360,7 @@ const otpVerification = async (req, res) => {
       );
       console.log(expirationThreshold);
       if (currentTimestamp > expirationThreshold) {
-        res.status(400).json({ message: "OTP expired" });
+        res.status(400).json({ message: "OTP expired. Please resend" });
       } else {
         res.status(200).json({ message: "OTP verified" });
       }
